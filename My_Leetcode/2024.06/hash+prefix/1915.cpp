@@ -16,11 +16,15 @@ we flip each character once, if there exists an position i, such that the substr
 a = b^(1<<idx)，反转第idx位的0/1
 */
 
+#include <string>
+#include <unordered_map>
+using namespace std;
 
 class Solution {
 public:
     long long wonderfulSubstrings(string word) {
-        std::unordered_map<int, int> count_map = {{0, 1}}; // 初始化为0，1，key是奇偶性代表数，value是个数
+        std::unordered_map<int, int> count_map; // key是奇偶性代表数，value是个数
+        count_map[0] = 1; // 初始化为0，1，
         int mask = 0;
         long long res = 0;
         for (auto& c: word) {
